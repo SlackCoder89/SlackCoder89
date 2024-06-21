@@ -39,6 +39,7 @@ public interface Supplier<T> {
 ```
 
 # Method Reference
+The following shows how we can change from passing objects to using method references.
 ## Step 1: Pass code
 ```java
 public class AppleComparator implements Comparator<Apple> {
