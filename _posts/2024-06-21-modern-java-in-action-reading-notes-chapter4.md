@@ -23,7 +23,7 @@ A collection is an in-memory data structure that holds all the values the data s
 
 By contrast, a stream is a conceptually fixed data structure whose elements are computed on demand. These elements are produced only as and when required. A stream is like a lazily constructed collection.
 
-![Streams versus collections](../assets/images/collections_vs_streams.png)
+<img alt="Streams versus collections" src="/assets/images/collections_vs_streams.png"/>
 
 # External vs. Internal iteration
 With the Collection interface, the user need to do the iteration by themselves (for example, using for-each); this is called external iteration. 
