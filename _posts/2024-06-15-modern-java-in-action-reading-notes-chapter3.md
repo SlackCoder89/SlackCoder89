@@ -3,10 +3,10 @@ layout: post
 title: 'Modern Java in Action reading notes--Chapter 3'
 date: 2024-06-15 23:51:00 +0000
 ---
-# Functional interface
+## Functional interface
 Functional interface is an interface that specifies only one abstract method.
 
-## Predicate
+### Predicate
 ```java
 @FunctionalInterface
 public interface Predicate<T> {
@@ -14,7 +14,7 @@ public interface Predicate<T> {
 }
 ```
 
-## Consumer
+### Consumer
 ```java
 @FunctionalInterface
 public interface Consumer<T> {
@@ -22,7 +22,7 @@ public interface Consumer<T> {
 }
 ```
 
-## Function
+### Function
 ```java
 @FunctionalInterface
 public interface Function<T, R> {
@@ -30,7 +30,7 @@ public interface Function<T, R> {
 }
 ```
 
-## Supplier
+### Supplier
 ```java
 @FunctionalInterface
 public interface Supplier<T> {
@@ -38,9 +38,9 @@ public interface Supplier<T> {
 }
 ```
 
-# Method Reference
+## Method Reference
 The following shows how we can change from passing objects to using method references.
-## Step 1: Pass code
+### Step 1: Pass code
 ```java8
 public class AppleComparator implements Comparator<Apple> {
     public int compare(Apple a1, Apple a2){
@@ -49,7 +49,7 @@ public class AppleComparator implements Comparator<Apple> {
 }
 inventory.sort(new AppleComparator());
 ```
-## Step 2: Use an anonymous class
+### Step 2: Use an anonymous class
 ```java8
 inventory.sort(new Comparator<Apple>() {
     public int compare(Apple a1, Apple a2){
@@ -57,49 +57,49 @@ inventory.sort(new Comparator<Apple>() {
     }
 });
 ```
-## Step 3: Use lambda expressions
+### Step 3: Use lambda expressions
 ```java8
 inventory.sort((Apple a1, Apple a2)
                         -> a1.getWeight().compareTo(a2.getWeight())
 );
 ```
-## Step 4: Use method references
+### Step 4: Use method references
 ```java8
 inventory.sort(comparing(Apple::getWeight));
 ```
-# Compose lambda expressions
-## Composing Comparators
-### Reversed order
+## Compose lambda expressions
+### Composing Comparators
+#### Reversed order
 ```java8
 inventory.sort(comparing(Apple::getWeight).reversed());
 ```
-### Chaining Comparators
+#### Chaining Comparators
 ```java8
 inventory.sort(comparing(Apple::getWeight)
          .reversed()
          .thenComparing(Apple::getCountry));
 ```
-## Composing Predicates
-### negate
+### Composing Predicates
+#### negate
 ```java
 Predicate<Apple> notRedApple = redApple.negate();
 ```
 This produces the negation of the existing Predicate object redApple.
-### and
+#### and
 ```java
 Predicate<Apple> redAndHeavyApple =
     redApple.and(apple -> apple.getWeight() > 150);
 ```
 This chains two predicates to produce another Predicate object. The new object predicate an apple is both red and heavy.
-### or
+#### or
 ```java
 Predicate<Apple> redAndHeavyAppleOrGreen =
     redApple.and(apple -> apple.getWeight() > 150)
             .or(apple -> GREEN.equals(a.getColor()));
 ```
 This chains 3 predicates to produce a more complex Predicate object. The new object predicate apples that are red and heavy or only green apples. 
-## Composing Functions
-### andThen
+### Composing Functions
+#### andThen
 ```java
 Function<Integer, Integer> f = x -> x + 1;
 Function<Integer, Integer> g = x -> x * 2;
@@ -107,7 +107,7 @@ Function<Integer, Integer> h = f.andThen(g);
 int result = h.apply(1); // This returns 4
 ```
 In mathematics, you’d write g(f(x)).
-### compose
+#### compose
 ```java
 Function<Integer, Integer> f = x -> x + 1;
 Function<Integer, Integer> g = x -> x * 2;

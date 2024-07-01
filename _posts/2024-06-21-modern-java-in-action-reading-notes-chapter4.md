@@ -8,14 +8,14 @@ The Streams API in Java 8 lets you write code that’s
 - Composable—Greater flexibility 
 - Parallelizable—Better performance
 
-# Stream
+## Stream
 Stream is “a sequence of elements from a source that supports data-processing operations.”
 
 Stream operations have two important characteristics:
 - Pipelining—Many stream operations return a stream themselves, allowing operations to be chained to form a larger pipeline.
 - Internal iteration—In contrast to collections, which are iterated explicitly using an iterator, stream operations do the iteration behind the scenes for you.
 
-# Streams vs. Collections
+## Streams vs. Collections
 
 The difference between collections and streams has to do with when things are computed. 
 
@@ -25,7 +25,7 @@ By contrast, a stream is a conceptually fixed data structure whose elements are 
 
 <img alt="Streams versus collections" src="/assets/images/collections_vs_streams.png"/>
 
-# External vs. Internal iteration
+## External vs. Internal iteration
 With the Collection interface, the user need to do the iteration by themselves (for example, using for-each); this is called external iteration. 
 
 The Streams library, by contrast, uses internal iteration—it does the iteration for you and takes care of storing the resulting stream value somewhere; you merely provide a function saying what’s to be done.
