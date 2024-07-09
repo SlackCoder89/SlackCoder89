@@ -9,7 +9,7 @@ Invoking the collect method on a stream triggers a reduction operation (paramete
 ## Reducing and summarizing
 ### Finding maximum and minimum in a stream of values
 You can use two collectors, *Collectors.maxBy* and *Collectors.minBy*, to calculate the maximum or minimum value in a stream.
-```java8
+```java 8
 Comparator<Dish> dishCaloriesComparator =
     Comparator.comparingInt(Dish::getCalories);
 Optional<Dish> mostCalorieDish =
@@ -19,16 +19,16 @@ Optional<Dish> mostCalorieDish =
 
 ### Summarization
 The Collectors class provides a specific factory method for summing: *Collectors.summingInt*.
-```java8
+```java 8
 int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));
 ```
 A *Collectors.averagingInt* is available to calculate the average of the same set of numeric values:
-```java8
+```java 8
 double avgCalories =
             menu.stream().collect(averagingInt(Dish::getCalories));
 ```
 You can count the elements in the menu and obtain the sum, average, maximum, and minimum of the calories contained in each dish with a single summarizing operation:
-```java8
+```java 8
 IntSummaryStatistics menuStatistics =
                 menu.stream().collect(summarizingInt(Dish::getCalories));
 ```
@@ -37,7 +37,7 @@ IntSummaryStatistics menuStatistics =
 You may wonder what the differences between the *collect* and *reduce* methods of the stream interface are, because often you can obtain the same results using either method. 
 
 For instance, you can achieve what is done by the *toList* Collector using the *reduce* method as follows:
-```java8
+```java 8
 Stream<Integer> stream = Arrays.asList(1, 2, 3, 4, 5, 6).stream();
 List<Integer> numbers = stream.reduce(
                                new ArrayList<Integer>(),
@@ -68,7 +68,7 @@ In this case, if you want thread safety, you’ll need to allocate a new List ev
 A common database operation is to group items in a set, based on one or more properties. 
 
 You can easily perform this task using a collector returned by the *Collectors.groupingBy* factory method, as follows:
-```java8
+```java 8
 Map<Dish.Type, List<Dish>> dishesByType =
                       menu.stream().collect(groupingBy(Dish::getType));
 ```
@@ -77,7 +77,7 @@ Map<Dish.Type, List<Dish>> dishesByType =
 Frequently after performing a grouping operation you may need to manipulate the elements in each resulting group. 
 
 Suppose, for example, that you want to filter only the caloric dishes, let’s say the ones with more than 500 calories.
-```java8
+```java 8
 Map<Dish.Type, List<Dish>> caloricDishesByType =
               menu.stream()
                   .collect(groupingBy(Dish::getType,
@@ -86,7 +86,7 @@ Map<Dish.Type, List<Dish>> caloricDishesByType =
 
 ### Multilevel grouping
 You can perform a two-level grouping. To achieve this you can pass to it a second inner *groupingBy* to the outer *groupingBy*, defining a second-level criterion to classify the stream’s items, as shown in the next listing.
-```java8
+```java 8
 Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishesByTypeCaloricLevel =
         menu.stream().collect(
                 groupingBy(Dish::getType,
@@ -103,7 +103,7 @@ Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishesByTypeCaloricLevel =
 The second collector passed to the first *groupingBy* can be any type of collector, not just another *groupingBy*. 
 
 For instance, it’s possible to count the number of Dishes in the menu for each type, by passing the *counting* collector as a second argument to the *groupingBy* collector:
-```java8
+```java 8
 Map<Dish.Type, Long> typesCount = menu.stream().collect(
                     groupingBy(Dish::getType, counting()));
 ```
@@ -112,7 +112,7 @@ Map<Dish.Type, Long> typesCount = menu.stream().collect(
 The *Collector* interface consists of a set of methods that provide a blueprint for how to implement specific reduction operations (collectors). You’re free to create customized reduction operations by providing your own implementation of the *Collector* interface.
 
 The next listing shows the interface signature together with the five methods it declares.
-```java8
+```java 8
 public interface Collector<T, A, R> {
             Supplier<A> supplier();
             BiConsumer<A, T> accumulator();

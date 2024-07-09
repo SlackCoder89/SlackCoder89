@@ -41,7 +41,7 @@ public interface Supplier<T> {
 ## Method Reference
 The following shows how we can change from passing objects to using method references.
 ### Step 1: Pass code
-```java8
+```java 8
 public class AppleComparator implements Comparator<Apple> {
     public int compare(Apple a1, Apple a2){
         return a1.getWeight().compareTo(a2.getWeight());
@@ -50,7 +50,7 @@ public class AppleComparator implements Comparator<Apple> {
 inventory.sort(new AppleComparator());
 ```
 ### Step 2: Use an anonymous class
-```java8
+```java 8
 inventory.sort(new Comparator<Apple>() {
     public int compare(Apple a1, Apple a2){
         return a1.getWeight().compareTo(a2.getWeight());
@@ -58,23 +58,23 @@ inventory.sort(new Comparator<Apple>() {
 });
 ```
 ### Step 3: Use lambda expressions
-```java8
+```java 8
 inventory.sort((Apple a1, Apple a2)
                         -> a1.getWeight().compareTo(a2.getWeight())
 );
 ```
 ### Step 4: Use method references
-```java8
+```java 8
 inventory.sort(comparing(Apple::getWeight));
 ```
 ## Compose lambda expressions
 ### Composing Comparators
 #### Reversed order
-```java8
+```java 8
 inventory.sort(comparing(Apple::getWeight).reversed());
 ```
 #### Chaining Comparators
-```java8
+```java 8
 inventory.sort(comparing(Apple::getWeight)
          .reversed()
          .thenComparing(Apple::getCountry));
