@@ -64,17 +64,17 @@ inventory.sort((Apple a1, Apple a2)
 );
 ```
 ### Step 4: Use method references
-```java 8
+```java
 inventory.sort(comparing(Apple::getWeight));
 ```
 ## Compose lambda expressions
 ### Composing Comparators
 #### Reversed order
-```java 8
+```java
 inventory.sort(comparing(Apple::getWeight).reversed());
 ```
 #### Chaining Comparators
-```java 8
+```java
 inventory.sort(comparing(Apple::getWeight)
          .reversed()
          .thenComparing(Apple::getCountry));
