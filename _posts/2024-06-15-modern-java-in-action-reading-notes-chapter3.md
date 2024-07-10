@@ -58,7 +58,7 @@ inventory.sort(new Comparator<Apple>() {
 });
 ```
 ### Step 3: Use lambda expressions
-```java 8
+```java
 inventory.sort((Apple a1, Apple a2)
                         -> a1.getWeight().compareTo(a2.getWeight())
 );
