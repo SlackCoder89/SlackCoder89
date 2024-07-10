@@ -22,14 +22,14 @@ numbers.stream()
 ## Mapping
 ### map
 Streams support the *map* method, which takes a function as argument. The function is applied to each element, mapping it into a new element (the word mapping is used because it has a meaning similar to transforming but with the nuance of “creating a new version of” rather than “modifying”).
-```java 8
+```java
 List<String> dishNames = menu.stream()
                              .map(Dish::getName)
                              .collect(toList());
 ```
 ### flatMap
 The *flatMap* method lets you replace each value of a stream with another stream and then concatenates all the generated streams into a single stream.
-```java 8
+```java
 List<String> uniqueCharacters =
   words.stream()
        .map(word -> word.split(""))
@@ -40,7 +40,7 @@ List<String> uniqueCharacters =
 
 ## Reducing
 In functional programming-language jargon, the reduction operation is referred to as a fold because you can view this operation as repeatedly folding a long piece of paper (your stream) until it forms a small square, which is the result of the fold operation.
-```java 8
+```java
 int sum = numbers.stream().reduce(0, (a, b) -> a + b);
 ```
 
