@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '*Modern Java in Action* reading notes--Chapter 11'
+title: 'Modern Java in Action reading notes--Chapter 11'
 date: 2024-07-09 16:35:00 +0000
 ---
 
