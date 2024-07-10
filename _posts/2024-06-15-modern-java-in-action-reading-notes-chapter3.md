@@ -41,7 +41,7 @@ public interface Supplier<T> {
 ## Method Reference
 The following shows how we can change from passing objects to using method references.
 ### Step 1: Pass code
-```java 8
+```java
 public class AppleComparator implements Comparator<Apple> {
     public int compare(Apple a1, Apple a2){
         return a1.getWeight().compareTo(a2.getWeight());
@@ -50,7 +50,7 @@ public class AppleComparator implements Comparator<Apple> {
 inventory.sort(new AppleComparator());
 ```
 ### Step 2: Use an anonymous class
-```java 8
+```java
 inventory.sort(new Comparator<Apple>() {
     public int compare(Apple a1, Apple a2){
         return a1.getWeight().compareTo(a2.getWeight());
