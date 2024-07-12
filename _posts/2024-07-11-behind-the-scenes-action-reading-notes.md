@@ -21,7 +21,7 @@ public class LambdaExample {
 ```
 
 Decompiling the bytecode via *javap -c -p* reveals two things. First is the fact that the lambda body has been compiled into a private static method that appears in the main class:
-```java
+```
 private static void lambda$main$0();
     Code:
        0: getstatic     #7                  // Field java/lang/System.out:Ljava/io/PrintStream;
@@ -36,7 +36,7 @@ public class StringFunction {
 }
 ```
 will produce a body method such as this, which takes a string and returns an integer, matching the signature of the interface method:
-```java
+```
 private static java.lang.Integer lambda$static$0(java.lang.String);
     Code:
        0: aload_0
@@ -45,7 +45,7 @@ private static java.lang.Integer lambda$static$0(java.lang.String);
        7: areturn
 ```
 The second thing to notice about the bytecode is the form of the main method:
-```java
+```
 public static void main(java.lang.String[]) throws java.lang.Exception;
     Code:
        0: invokedynamic #2,  0              // InvokeDynamic #0:run:()Ljava/lang/Runnable;
@@ -87,11 +87,11 @@ The call site needs to be *bootstrapped*, and the JVM achieves this by running a
 Each invokedynamic call site has a BSM associated with it, which is stored in a separate area of the class file. These methods allow user code to programmatically determine linkage at runtime.
 
 Decompiling an *invokedynamic* call, such as that from my original example of a *Runnable*, shows that it has this form:
-```java
+```
 0: invokedynamic #2,  0
 ```
 And in the class file’s constant pool, notice that entry #2 is a constant of type *CONSTANT_InvokeDynamic*. The relevant parts of the constant pool are
-```java
+```
 #2 = InvokeDynamic      #0:#31
    ...
   #31 = NameAndType        #46:#47        // run:()Ljava/lang/Runnable;
@@ -112,7 +112,7 @@ A BSM takes at least three arguments and returns a CallSite. The standard argume
 
 ## Decoding the lambda’s bootstrap method
 Use the -v argument to *javap* to see the bootstrap methods. This is necessary because the bootstrap methods live in a special part of the class file and make references back into the main constant pool. For this simple *Runnable* example, there is a single bootstrap method in that section:
-```java
+```
 BootstrapMethods:
   0: #28 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:
         (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;
@@ -124,7 +124,7 @@ BootstrapMethods:
       #29 ()V
 ```
 The bootstrap method for this call site is entry #28 in the constant pool. This is an entry of type *MethodHandle*. Now let’s compare it to the case of the string function example:
-```java
+```
 0: #27 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:
         (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;
          Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;
