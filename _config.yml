@@ -29,6 +29,7 @@ github_username: SlackCoder89
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-toc
 
 paginate: 5
 paginate_path: "/page:num/"

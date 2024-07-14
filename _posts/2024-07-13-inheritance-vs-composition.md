@@ -2,7 +2,13 @@
 layout: post
 title: 'Inheritance versus Composition'
 date: 2024-07-13 22:58:00 +0000
+toc: true
 ---
+## Table Of Contents
+{:.no_toc}
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Inheritance
 ### Advantages
 - Class inheritance is straightforward to use, since it's supported directly by the programming language.
