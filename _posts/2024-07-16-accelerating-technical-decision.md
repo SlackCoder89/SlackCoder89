@@ -63,3 +63,6 @@ Creating a compelling and succinct strategy is complex, and Navigators help team
 
 ## Summary
 Navigator pattern help providing clear, fast, and balanced technical decisions. It also provides strategy for making decisions.
+
+## Reference
+[Accelerating Technical Decision-Making by Empowering ICs with Engineering Strategy](https://www.infoq.com/articles/accelerating-technical-decision-making/)
