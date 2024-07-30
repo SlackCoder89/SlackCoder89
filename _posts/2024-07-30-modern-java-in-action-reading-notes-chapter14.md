@@ -6,7 +6,7 @@ date: 2024-07-09 16:35:00 +0000
 ## Table Of Contents
 {:.no_toc}
 * Will be replaced with the ToC, excluding the "Contents" header
-  {:toc}
+{:toc}
 
 ## LIMITED VISIBILITY CONTROL
 Java provides access modifiers to support infor- mation hiding. These modifiers are public, protected, package-level, and private visibility. But what about controlling visibility between packages?
