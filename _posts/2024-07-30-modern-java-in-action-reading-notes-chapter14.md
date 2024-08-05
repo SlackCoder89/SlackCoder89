@@ -10,7 +10,7 @@ toc: true
 {:toc}
 
 ## LIMITED VISIBILITY CONTROL
-Java provides access modifiers to support infor- mation hiding. These modifiers are public, protected, package-level, and private visibility. But what about controlling visibility between packages?
+Java provides access modifiers to support information hiding. These modifiers are public, protected, package-level, and private visibility. But what about controlling visibility between packages?
 
 Most applications have several packages defined to group various classes, but packages have limited support for visibility control. If you want classes and interfaces from one package to be visible to another package, you have to declare them as public.
 
